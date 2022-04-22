@@ -1,0 +1,79 @@
+scalar Date
+
+type User {
+  id: ID
+  name: String
+  accountType: String
+  image: String
+  firstName: String
+  lastName: String
+  otherName: String
+  email: String
+  password: String
+  emailToken: String
+  emailVerified: Boolean
+  isActive: Boolean
+  country: String
+  state: String
+  city: String
+  role: String
+  phone: String
+  address: String
+  reps: [User]
+  suppervisor: User
+  lastSeen: Date
+  reportCount: Int
+  applicantCount: Int
+  applicants: [Applicant]
+  bankName: String
+  accountNumber: String
+  accountName: String
+  createdAt: Date
+  updatedAt: Date
+  myUsers: [User]
+}
+
+type Query {
+  getUsers(
+    search: String
+    limit: Int
+    skip: Int
+    accountType: String
+    role: String
+  ): [User]
+  getStaffs(search: String, limit: Int, skip: Int): [User]
+  me(token: String): User
+  auth: User
+  getUser(id: ID): User
+  getStaff(id: ID): User
+  getLimitedUsers(limit: Int, skip: Int): [User]
+  countUsers: Int
+  countLawyers: Int
+  countPaidCases: Int
+  searchUsers(text: String): [User]
+  getUserApplicants(id: ID): [Applicant]
+  getLawyers(search: String): [User]
+  getTopLawyers: [User]
+  getTopReps: [User]
+  getMyUsers(search: String): [User]
+  seedUsers: [User]
+}
+
+type Mutation {
+  registerWithEmail(input: UserInput): User
+  loginWithEmail(email: String, password: String): User
+  deleteUser(id: ID): User
+  deleteManyUser: [User]
+  updateUser(input: UserInput): User
+}
+
+input UserInput {
+  id: ID
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  createdAt: Date
+  isActive: Boolean
+  name: String
+}

@@ -1,0 +1,113 @@
+scalar Date
+
+type Applicant {
+  id: ID
+  name: String
+  email: String
+  phone: String
+  gender: String
+  address: String
+  breach_type: String
+  inPrison: Boolean
+  daysPlus: Boolean
+  monthsPlus: Boolean
+  arrested_on: String
+  arrested_at: String
+  arraigned_at: String
+  arraigned_on: String
+  offence_charged: String
+  offence_suspected: String
+  case_mates: Int
+  itinerary: String
+  station: String
+  station2: String
+  station_duration: Int
+  station2_duration: Int
+  state_origin: String
+  state_residence: String
+  state_arrest: String
+  state_arraigned: String
+  adjournment_date: Date
+  charge_no: String
+  lga: String
+  image: String
+  beaten: String
+  injured: String
+  bail_amount: Int
+  dpp: String
+  detention_cost_explained: String
+  caseType: String
+  app_id: String
+  division: String
+  rep: User
+  lawyer: User
+  affidavit: Affidavit
+  relative: [Relative]
+  exhibit: [Exhibit]
+  first_accused: String
+  amount_paid: Int
+  print_ready: Boolean
+  contact_form: String
+  draft: String
+  updated_by: User
+  created_by: User
+  deleted_by: User
+  user: User
+  time: Date
+  createdAt: Date
+  updatedAt: Date
+  deletedAt: Date
+}
+
+type Query {
+  getApplicants: [Applicant]
+  getApplicant(id: ID): Applicant
+  getUserApplicants(id: ID): [Applicant]
+  showDraft(id: ID): Applicant
+}
+type Mutation {
+  createApplicant(input: ApplicantInput): Applicant
+  deleteApplicant(id: ID): Applicant
+  uploadForm(input: UploadFormInput): Applicant
+}
+
+input ApplicantInput {
+  id: ID
+  name: String
+  gender: String
+  state_origin: String
+  state_residence: String
+  lga: String
+  address: String
+  breach_type: String
+  inPrison: Boolean
+  daysPlus: Boolean
+  monthsPlus: Boolean
+  arrested_on: Date
+  arrested_at: String
+  offence_suspected: String
+  case_mates: Int
+  itinerary: String
+  station: String
+  station2: String
+  station_duration: Int
+  station2_duration: Int
+  state_arrest: String
+  beaten: String
+  injured: String
+  bail_amount: Int
+  detention_cost_explained: String
+  first_accused: String
+  offence_charged: String
+  arraigned_on: Date
+  state_arraigned: String
+  adjournment_date: Date
+  dpp: String
+  division: String
+  contact_form: String
+}
+
+input UploadFormInput {
+  applicant_id: ID
+  contact_form: String
+}

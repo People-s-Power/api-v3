@@ -1,0 +1,64 @@
+type Campaign {
+  id: ID
+  title: String
+  image: String
+  excerpt: String
+  aim: String
+  target: String
+  body: String
+  slug: String
+  status: String
+  author: User
+  createdAt: Date
+  updatedAt: Date
+  addedFrom: String
+  endorsements: [Endorsement]
+  likes: [String]
+  promoted: Boolean
+  views: [String]
+  category: String
+}
+
+type View {
+  user: String
+}
+
+type CampaignNotice {
+  id: ID
+  action: String
+  author: User
+  data: Campaign
+  createdAt: Date
+  read: Boolean
+}
+
+type Query {
+  # Reports
+  getCampaigns(limit: Int): [Campaign]
+  getCampaign(slug: String): Campaign
+  myCampaign: [Campaign]
+  getCampaignNotice: [CampaignNotice]
+  getActiveCampaigns: [Campaign]
+}
+
+type Mutation {
+  # Reports Mutation
+  addCampaign(input: CampaignInput): Campaign
+  deleteCampaign(id: ID): Campaign
+  updateCampaign(input: CampaignInput): Campaign
+  deleteAllCampNotice: Boolean
+}
+
+input CampaignInput {
+  id: ID
+  title: String
+  video: String
+  image: String
+  aim: String
+  target: String
+  body: String
+  slug: String
+  status: String
+  author: ID
+  addedFrom: String
+}

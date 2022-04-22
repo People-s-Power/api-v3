@@ -1,0 +1,31 @@
+type Relative {
+  id: ID
+  name: String
+  phone: String
+  rel: String
+  applicant_id: Applicant
+}
+
+type Query {
+  # Relative
+
+  findAllRelative(applicant_id: ID): [Relative]
+  findOneRelative(_id: ID): Relative
+  getRelativesByApplicant(applicant_id: ID): [Relative]
+}
+
+type Mutation {
+  # Relative Mutation
+  createRelative(input: RelativeInput): Relative
+  deleteOneRelative(_id: ID): Relative
+  deleteAllRelative(applicant_id: ID): Relative
+  updateRelative(input: RelativeInput): Relative
+}
+
+input RelativeInput {
+  _id: ID
+  name: String
+  phone: String
+  rel: String
+  applicant_id: ID
+}

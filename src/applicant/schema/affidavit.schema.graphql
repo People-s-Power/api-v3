@@ -1,0 +1,36 @@
+type Affidavit {
+  id: ID
+  name: String
+  address: String
+  title: String
+  religion: String
+  occupation: String
+  rel: String
+  gender: String
+  applicant: Applicant
+}
+
+type Query {
+  getAffidavits: [Affidavit]
+  getAffidavit(id: ID): Affidavit
+  getAffidavitByApplicant(applicant_id: ID): Affidavit
+}
+
+type Mutation {
+  createAffidavit(input: AffidavitInput): Affidavit
+  deleteAffidavit(id: ID): Affidavit
+  updateAffidavit(input: AffidavitInput): Affidavit
+  deleteManyAffidavit: [Affidavit]
+}
+
+input AffidavitInput {
+  id: ID
+  name: String
+  address: String
+  title: String
+  religion: String
+  occupation: String
+  rel: String
+  gender: String
+  applicant: ID
+}

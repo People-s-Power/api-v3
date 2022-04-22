@@ -1,0 +1,31 @@
+type Exhibit {
+  _id: ID
+  name: String
+  image: String
+  applicant_id: Applicant
+}
+
+type Query {
+  # Affidavit
+
+  # Exhibit
+  findAllExhibits(applicant_id: ID): [Exhibit]
+  findOneExhibit: Exhibit
+  getExhibitsByApplicant(applicant_id: ID): [Exhibit]
+}
+
+type Mutation {
+  # Affidavit Mutaion
+
+  # Exhibit Mutation
+  createExhibit(input: ExhibitInput): Exhibit
+  deleteExhibit(_id: ID): Exhibit
+  deleteAllExhibit(applicant_id: ID): [Exhibit]
+  updateExhibit(input: ExhibitInput): Exhibit
+}
+
+input ExhibitInput {
+  name: String
+  image: String
+  applicant_id: ID
+}
