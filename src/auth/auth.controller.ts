@@ -39,7 +39,7 @@ export class AuthController {
     type: LoginWithEmailDTO,
     name: 'login',
   })
-  async login(@Body() data: { email: string; password: string }) {
+  async login(@Body() data: { email?: string; phone?:string; password: string }) {
     const result = await this.authService.loginWithEmail(
       data.email,
       data.phone,

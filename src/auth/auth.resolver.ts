@@ -15,9 +15,10 @@ export class AuthResolver {
   async loginWithEmail(
     @Args('email') email: string,
     @Args('password') password: string,
+    @Args('phone') phone: string,
     @Context('req') req: ReqWithUser,
   ) {
-    const user = await this.authService.loginWithEmail(email, password);
+    const user = await this.authService.loginWithEmail(email, phone, password);
     return user;
   }
 }

@@ -88,6 +88,8 @@ export class LoginWithEmailDTO {
   @ApiProperty()
   email: string;
   @ApiProperty()
+  phone: string;
+  @ApiProperty()
   password: string;
 }
 export class LoginWithGoogleDTO {
