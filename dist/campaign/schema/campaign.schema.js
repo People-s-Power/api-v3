@@ -84,6 +84,12 @@ __decorate([
     __metadata("design:type", Array)
 ], Campaign.prototype, "endorsements", void 0);
 __decorate([
+    mongoose_1.Prop({
+        type: [{ type: mongoose_2.Types.ObjectId, ref: 'User', autopopulate: true }],
+    }),
+    __metadata("design:type", Array)
+], Campaign.prototype, "endorserIds", void 0);
+__decorate([
     mongoose_1.Prop(),
     __metadata("design:type", Number)
 ], Campaign.prototype, "endorsementCount", void 0);

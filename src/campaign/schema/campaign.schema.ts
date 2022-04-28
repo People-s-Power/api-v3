@@ -61,6 +61,10 @@ export class Campaign {
     type: [{ type: Types.ObjectId, ref: 'Endorsement', autopopulate: true }],
   })
   endorsements: IEndorsement[];
+  @Prop({
+    type: [{ type: Types.ObjectId, ref: 'User', autopopulate: true }],
+  })
+  endorserIds: string[];
   @Prop()
   endorsementCount: number;
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User', autopopulate: true }] })

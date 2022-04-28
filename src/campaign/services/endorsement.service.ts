@@ -26,13 +26,26 @@ export class EndorsementService {
     user: UserDocument,
   ): Promise<Endorsement> {
     const { campaign, body } = data;
+
     try {
+      let campaign1 = await this.CampaignModel.findById(campaign);
+      const endorsers = campaign1.endorserIds
+      const endorser = endorsers.find((item) => item.toString() === user.id.toString())
+      
+      if(endorser) throw new Error('User already Endorsed')
+
+       campaign1 = await this.CampaignModel.findOneAndUpdate(
+        { _id: campaign },
+        { $addToSet: { endorserIds: user.id } },
+        { new: true },
+      );
+
       const endorsement = await this.endorsementModel.create({
         campaign,
         body,
         author: user.id as any,
       });
-      const campaign1 = await this.CampaignModel.findOneAndUpdate(
+      campaign1 = await this.CampaignModel.findOneAndUpdate(
         { _id: campaign },
         { $addToSet: { endorsements: endorsement } },
         { new: true },

@@ -21,6 +21,7 @@ export declare class Campaign {
     addedFrom: string;
     category: string;
     endorsements: IEndorsement[];
+    endorserIds: string[];
     endorsementCount: number;
     likes: UserDocument[];
     likeCount: number;

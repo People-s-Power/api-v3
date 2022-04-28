@@ -31,6 +31,7 @@ let EndorsementController = class EndorsementController {
         return this.endorsementService.findByCampaign(id);
     }
     create(data, req) {
+        console.log(data);
         return this.endorsementService.create(data, req.user);
     }
     update(data) {

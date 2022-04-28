@@ -36,6 +36,7 @@ export class EndorsementController {
   @UseGuards(RestAuthGuard)
   @Post()
   create(@Body() data: CreateEndorsementDTO, @Req() req: ReqWithUser) {
+    console.log(data)
     return this.endorsementService.create(data, req.user);
   }
   @UseGuards(RestAuthGuard)
