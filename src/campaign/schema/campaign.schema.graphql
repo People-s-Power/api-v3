@@ -12,6 +12,8 @@ type Campaign {
   createdAt: Date
   updatedAt: Date
   addedFrom: String
+  numberOfPaidViewsCount: Int
+  numberOfPaidEndorsementCount: Int
   endorsements: [Endorsement]
   likes: [String]
   promoted: Boolean

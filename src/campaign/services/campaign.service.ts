@@ -55,6 +55,8 @@ export class CampaignService {
         author,
         excerpt,
         image,
+        numberOfPaidEndorsementCount: 0,
+        numberOfPaidViewsCount: 0,
       });
       this.campaignGateway.createdCampaign({
         campaignTitle: campaign.title,

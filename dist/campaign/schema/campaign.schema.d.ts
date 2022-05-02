@@ -22,7 +22,8 @@ export declare class Campaign {
     category: string;
     endorsements: IEndorsement[];
     endorserIds: string[];
-    endorsementCount: number;
+    numberOfPaidEndorsementCount: number;
+    numberOfPaidViewsCount: number;
     likes: UserDocument[];
     likeCount: number;
     promoted: boolean;

@@ -32,7 +32,6 @@ let EndorsementService = class EndorsementService {
             let campaign1 = await this.CampaignModel.findById(campaign);
             const endorsers = campaign1.endorserIds;
             const endorser = endorsers.find((item) => item.toString() === user.id.toString());
-            console.log(endorsers, endorser);
             if (endorser)
                 throw new Error('User already Endorsed');
             campaign1 = await this.CampaignModel.findOneAndUpdate({ _id: campaign }, { $addToSet: { endorserIds: user.id } }, { new: true });

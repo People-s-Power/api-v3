@@ -52,7 +52,7 @@ let CampaignService = class CampaignService {
         try {
             const campaign = await this.campaignModel.create(Object.assign(Object.assign({}, data), { author,
                 excerpt,
-                image }));
+                image, numberOfPaidEndorsementCount: 0, numberOfPaidViewsCount: 0 }));
             this.campaignGateway.createdCampaign({
                 campaignTitle: campaign.title,
                 user,
