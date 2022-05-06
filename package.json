@@ -57,6 +57,7 @@
     "mongoose-autopopulate": "^0.16.0",
     "mongoose-slug-generator": "^1.0.4",
     "nestjs-session": "^2.0.0",
+    "node-mailjet": "^3.4.1",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
@@ -121,5 +122,8 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
