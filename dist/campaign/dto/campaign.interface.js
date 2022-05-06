@@ -19,5 +19,6 @@ var CampaignSocketEnum;
     CampaignSocketEnum["Promoted"] = "promoted-campaign";
     CampaignSocketEnum["Deleted"] = "deleted-campaign";
     CampaignSocketEnum["Get"] = "get-campaigns";
+    CampaignSocketEnum["Send"] = "send-endorsements";
 })(CampaignSocketEnum = exports.CampaignSocketEnum || (exports.CampaignSocketEnum = {}));
 //# sourceMappingURL=campaign.interface.js.map

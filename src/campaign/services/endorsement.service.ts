@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UserDocument } from 'src/user/entity/user.schema';
+import { User, UserDocument } from 'src/user/entity/user.schema';
 import {
   CreateEndorsementDTO,
   LikeEndorsementDTO,
@@ -14,6 +14,7 @@ import { Endorsement, EndorsementDocument } from '../schema/endorsement.schema';
 @Injectable()
 export class EndorsementService {
   constructor(
+    @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
     @InjectModel(Endorsement.name)
     private readonly endorsementModel: Model<EndorsementDocument>,
     @InjectModel(Campaign.name)
@@ -34,6 +35,8 @@ export class EndorsementService {
       
       if(endorser) throw new Error('User already Endorsed')
 
+      // console
+
        campaign1 = await this.CampaignModel.findOneAndUpdate(
         { _id: campaign },
         { $addToSet: { endorserIds: user.id } },
@@ -45,6 +48,7 @@ export class EndorsementService {
         body,
         author: user.id as any,
       });
+
       campaign1 = await this.CampaignModel.findOneAndUpdate(
         { _id: campaign },
         { $addToSet: { endorsements: endorsement } },

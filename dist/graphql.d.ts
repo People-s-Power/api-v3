@@ -318,6 +318,8 @@ export interface Campaign {
     createdAt?: Nullable<Date>;
     updatedAt?: Nullable<Date>;
     addedFrom?: Nullable<string>;
+    numberOfPaidViewsCount?: Nullable<number>;
+    numberOfPaidEndorsementCount?: Nullable<number>;
     endorsements?: Nullable<Nullable<Endorsement>[]>;
     likes?: Nullable<Nullable<string>[]>;
     promoted?: Nullable<boolean>;

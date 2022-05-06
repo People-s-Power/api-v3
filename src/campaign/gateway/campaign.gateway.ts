@@ -13,7 +13,7 @@ import { WsGuard } from 'src/auth/guards/local.guard';
 import { Notice, NoticeDocument } from 'src/notification/notification.schema';
 import { UserDocument } from 'src/user/entity/user.schema';
 import { Server } from 'ws';
-import { CampaignSocketEnum } from '../dto/campaign.interface';
+import { CampaignSocketEnum, ISendEndorsement } from '../dto/campaign.interface';
 import { Campaign, CampaignDocument } from '../schema/campaign.schema';
 
 @WebSocketGateway({ cors: true })

@@ -5,10 +5,11 @@ import { CampaignGateway } from '../gateway/campaign.gateway';
 import { CampaignDocument } from '../schema/campaign.schema';
 import { Endorsement, EndorsementDocument } from '../schema/endorsement.schema';
 export declare class EndorsementService {
+    private readonly userModel;
     private readonly endorsementModel;
     private readonly CampaignModel;
     private campaignGateway;
-    constructor(endorsementModel: Model<EndorsementDocument>, CampaignModel: Model<CampaignDocument>, campaignGateway: CampaignGateway);
+    constructor(userModel: Model<UserDocument>, endorsementModel: Model<EndorsementDocument>, CampaignModel: Model<CampaignDocument>, campaignGateway: CampaignGateway);
     create(data: CreateEndorsementDTO, user: UserDocument): Promise<Endorsement>;
     findAll(): Promise<Endorsement[]>;
     findByCampaign(campaign: any): Promise<Endorsement[]>;

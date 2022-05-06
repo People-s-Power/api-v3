@@ -21,7 +21,8 @@ const campaign_gateway_1 = require("../gateway/campaign.gateway");
 const campaign_schema_1 = require("../schema/campaign.schema");
 const endorsement_schema_1 = require("../schema/endorsement.schema");
 let EndorsementService = class EndorsementService {
-    constructor(endorsementModel, CampaignModel, campaignGateway) {
+    constructor(userModel, endorsementModel, CampaignModel, campaignGateway) {
+        this.userModel = userModel;
         this.endorsementModel = endorsementModel;
         this.CampaignModel = CampaignModel;
         this.campaignGateway = campaignGateway;
@@ -142,9 +143,11 @@ let EndorsementService = class EndorsementService {
 };
 EndorsementService = __decorate([
     common_1.Injectable(),
-    __param(0, mongoose_1.InjectModel(endorsement_schema_1.Endorsement.name)),
-    __param(1, mongoose_1.InjectModel(campaign_schema_1.Campaign.name)),
+    __param(0, mongoose_1.InjectModel(user_schema_1.User.name)),
+    __param(1, mongoose_1.InjectModel(endorsement_schema_1.Endorsement.name)),
+    __param(2, mongoose_1.InjectModel(campaign_schema_1.Campaign.name)),
     __metadata("design:paramtypes", [mongoose_2.Model,
+        mongoose_2.Model,
         mongoose_2.Model,
         campaign_gateway_1.CampaignGateway])
 ], EndorsementService);

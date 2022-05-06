@@ -16,6 +16,13 @@ export enum CampaignSocketEnum {
   Promoted = 'promoted-campaign',
   Deleted = 'deleted-campaign',
   Get = 'get-campaigns',
+  Send = 'send-endorsements'
+}
+
+export interface ISendEndorsement {
+  campaignId: string,
+  endorserId: string,
+  endorserName: string
 }
 
 export interface ICampaign extends Document {
