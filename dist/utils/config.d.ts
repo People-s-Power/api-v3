@@ -21,6 +21,8 @@ declare const config: {
     GOOGLE_CLIENT_SECRET: string;
     GOOGLE_PROJECT_ID: string;
     ORIGINS: string[];
+    mailjet_api_key: string;
+    mailjet_secret: string;
 };
 export declare const mongooseOption: {
     useNewUrlParser: boolean;

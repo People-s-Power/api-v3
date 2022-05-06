@@ -46,6 +46,8 @@ const config = {
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || '',
     GOOGLE_PROJECT_ID: process.env.GOOGLE_PROJECT_ID || '',
     ORIGINS: process.env.NODE_ENV === 'production' ? prodOrigins : devOrigins,
+    mailjet_api_key: process.env.MAILJET_KEY,
+    mailjet_secret: process.env.MAILJET_SECRET
 };
 exports.mongooseOption = {
     useNewUrlParser: true,

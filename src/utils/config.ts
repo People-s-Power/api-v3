@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+
 const prodOrigins = [
   'http://195.110.59.91',
   'http://server.edfhr.org',
@@ -50,6 +51,8 @@ const config = {
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || '',
   GOOGLE_PROJECT_ID: process.env.GOOGLE_PROJECT_ID || '',
   ORIGINS: process.env.NODE_ENV === 'production' ? prodOrigins : devOrigins,
+  mailjet_api_key:  process.env.MAILJET_KEY,
+  mailjet_secret: process.env.MAILJET_SECRET
 };
 
 export const mongooseOption = {
@@ -58,4 +61,5 @@ export const mongooseOption = {
   useCreateIndex: true,
   useFindAndModify: false,
 };
+
 export default config;
