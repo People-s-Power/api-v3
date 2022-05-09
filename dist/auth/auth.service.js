@@ -85,10 +85,10 @@ let AuthService = class AuthService {
             const isMatch = bcrypt.compareSync(password, user.password);
             if (!isMatch)
                 throw new common_1.UnauthorizedException('Email or password not correct');
-            if (user.accountType === user_dto_1.AccountTypeEnum.Staff) {
-                if (!(user === null || user === void 0 ? void 0 : user.isActive))
-                    throw new common_1.BadRequestException('Please contact support@edfhr.org to activate your account');
-            }
+            // if (user.accountType === user_dto_1.AccountTypeEnum.Staff) {
+            //     if (!(user === null || user === void 0 ? void 0 : user.isActive))
+            //         throw new common_1.BadRequestException('Please contact support@edfhr.org to activate your account');
+            // }
             const { firstName, lastName, image, id, role, accountType, reps, isActive, } = user;
             const token = this.jwtService.sign(user.id);
             return {

@@ -15,6 +15,7 @@ import { CampaignStatusEnum } from '../dto/campaign.interface';
 import { CampaignGateway } from '../gateway/campaign.gateway';
 import { Campaign, CampaignDocument, View, ViewDocument } from '../schema/campaign.schema';
 import { Endorsement } from '../schema/endorsement.schema';
+import { viewCampMail, updateCampMail } from  '../../utils/sendMaijet'
 
 export class ISessionResponseData {
   id: string;
@@ -118,6 +119,9 @@ export class CampaignService {
         data,
         { new: true },
       );
+      const author = await this.userModel.findById(campaign.author)
+
+      await updateCampMail(campaign.title, author.email, author.name)
       return campaign;
     } catch (error) {
       throw error;
@@ -258,11 +262,16 @@ export class CampaignService {
         user: userId,
       }
 
-      if(campaign.views.includes(userId)) return 'Viewed'
+      // if(campaign.views.includes(userId)) return 'Viewed'
+
+      // Sending email to the author 
+      const author = await this.userModel.findById(campaign.author)
+
 
       campaign.views.push(userId)
       campaign.save()
       // console.log(campaign)
+      await viewCampMail(campaign.title, user?.name, author.email, author.name)
       return 'Viewer Added';
     } catch (error) {
       console.log(error)

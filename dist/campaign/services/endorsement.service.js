@@ -20,6 +20,7 @@ const user_schema_1 = require("../../user/entity/user.schema");
 const campaign_gateway_1 = require("../gateway/campaign.gateway");
 const campaign_schema_1 = require("../schema/campaign.schema");
 const endorsement_schema_1 = require("../schema/endorsement.schema");
+const sendMaijet_1 = require("../../utils/sendMaijet");
 let EndorsementService = class EndorsementService {
     constructor(userModel, endorsementModel, CampaignModel, campaignGateway) {
         this.userModel = userModel;
@@ -46,6 +47,8 @@ let EndorsementService = class EndorsementService {
                 campaignTitle: campaign1.title,
                 user,
             });
+            const author = await this.userModel.findById(campaign1.author);
+            await sendMaijet_1.endorsedCampMail(campaign1.title, campaign1.endorsements.length, author.email, author.name);
             return endorsement;
         }
         catch (error) {

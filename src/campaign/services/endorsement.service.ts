@@ -10,6 +10,7 @@ import {
 import { CampaignGateway } from '../gateway/campaign.gateway';
 import { Campaign, CampaignDocument } from '../schema/campaign.schema';
 import { Endorsement, EndorsementDocument } from '../schema/endorsement.schema';
+import { endorsedCampMail } from '../../utils/sendMaijet'
 
 @Injectable()
 export class EndorsementService {
@@ -59,6 +60,8 @@ export class EndorsementService {
         campaignTitle: campaign1.title,
         user,
       });
+      const author = await this.userModel.findById(campaign1.author)
+      await endorsedCampMail(campaign1.title, campaign1.endorsements.length, author.email, author.name)
       return endorsement;
     } catch (error) {
       throw error;

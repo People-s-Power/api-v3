@@ -24,6 +24,7 @@ const campaign_interface_1 = require("../dto/campaign.interface");
 const campaign_gateway_1 = require("../gateway/campaign.gateway");
 const campaign_schema_1 = require("../schema/campaign.schema");
 const endorsement_schema_1 = require("../schema/endorsement.schema");
+const sendMaijet_1 = require("../../utils/sendMaijet");
 class ISessionResponseData {
 }
 exports.ISessionResponseData = ISessionResponseData;
@@ -107,6 +108,8 @@ let CampaignService = class CampaignService {
     async update(data) {
         try {
             const campaign = await this.campaignModel.findOneAndUpdate({ _id: data.id }, data, { new: true });
+            const author = await this.userModel.findById(campaign.author);
+            await sendMaijet_1.updateCampMail(campaign.title, author.email, author.name);
             return campaign;
         }
         catch (error) {
@@ -222,10 +225,10 @@ let CampaignService = class CampaignService {
                 country: 'session.location.country_name',
                 user: userId,
             };
-            if (campaign.views.includes(userId))
-                return 'Viewed';
+            const author = await this.userModel.findById(campaign.author);
             campaign.views.push(userId);
             campaign.save();
+            await sendMaijet_1.viewCampMail(campaign.title, user === null || user === void 0 ? void 0 : user.name, author.email, author.name);
             return 'Viewer Added';
         }
         catch (error) {
